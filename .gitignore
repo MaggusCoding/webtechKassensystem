@@ -4,7 +4,7 @@
 # Log file
 *.log
 *.lock
-.bin
+*.bin
 # BlueJ files
 *.ctxt
 
