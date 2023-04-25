@@ -1,0 +1,7 @@
+###
+POST http://localhost:8080/kassenbuchung
+Content-Type: application/json
+
+{
+
+}
