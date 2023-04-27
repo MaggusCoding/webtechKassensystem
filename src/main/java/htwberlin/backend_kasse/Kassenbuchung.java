@@ -4,7 +4,6 @@ package htwberlin.backend_kasse;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="buchungen")
 public class Kassenbuchung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

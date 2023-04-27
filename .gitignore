@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
-
+##H2 DB##
+*.mv.db
+*.trace.db
 # Log file
 *.log
 *.lock
