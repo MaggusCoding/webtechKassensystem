@@ -3,6 +3,8 @@ package htwberlin.backend_kasse;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 public class Kassenbuchung {
     @Id
@@ -10,11 +12,14 @@ public class Kassenbuchung {
     private int id;
     private String buchender;
 
+    private BigDecimal buchungsbetrag;
+
 
     public Kassenbuchung(){};
 
-    public Kassenbuchung(String buchender){
+    public Kassenbuchung(String buchender, BigDecimal buchungsbetrag){
         this.buchender=buchender;
+        this.buchungsbetrag= buchungsbetrag;
     }
 
     public int getId(){return id;}
@@ -27,4 +32,11 @@ public class Kassenbuchung {
 
     public void setBuchender(String buchender){this.buchender=buchender;};
 
+    public BigDecimal getBuchungsbetrag() {
+        return buchungsbetrag;
+    }
+
+    public void setBuchungsbetrag(BigDecimal buchungsbetrag) {
+        this.buchungsbetrag = buchungsbetrag;
+    }
 }

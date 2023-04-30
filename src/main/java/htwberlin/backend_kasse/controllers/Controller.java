@@ -16,7 +16,7 @@ public class Controller {
             return kassenbuchungService.save(kassenbuchung);
         }
 
-    @GetMapping("/kassenbuchung/{id}")
+        @GetMapping("/kassenbuchung/{id}")
         public Kassenbuchung getKassenbuchung(@PathVariable String id){
             int kassenbuchungId = Integer.parseInt(id);
         return kassenbuchungService.get(kassenbuchungId);
