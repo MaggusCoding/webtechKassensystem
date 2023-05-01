@@ -2,8 +2,12 @@ package htwberlin.backend_kasse;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 public class Kassenbuchung {
@@ -11,8 +15,11 @@ public class Kassenbuchung {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String buchender;
-
     private BigDecimal buchungsbetrag;
+    @CreationTimestamp
+    private Instant timestamp;
+    @UpdateTimestamp
+    private Instant lastUpdatedOn;
 
 
     public Kassenbuchung(){};
@@ -39,4 +46,6 @@ public class Kassenbuchung {
     public void setBuchungsbetrag(BigDecimal buchungsbetrag) {
         this.buchungsbetrag = buchungsbetrag;
     }
+
+
 }
