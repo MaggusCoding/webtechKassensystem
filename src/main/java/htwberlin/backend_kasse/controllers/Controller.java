@@ -21,10 +21,10 @@ public class Controller {
             int kassenbuchungId = Integer.parseInt(id);
         return kassenbuchungService.get(kassenbuchungId);
     }
-        @GetMapping("/")
+       /** @GetMapping("/")
         public String index() {
             return "Hello World!";
-        }
+        }*/
 
         @GetMapping("/help")
         public String help() {

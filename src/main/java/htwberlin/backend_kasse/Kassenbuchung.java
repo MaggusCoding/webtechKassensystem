@@ -21,6 +21,9 @@ public class Kassenbuchung {
     @UpdateTimestamp
     private Instant lastUpdatedOn;
 
+    //@OneToOne
+   // private Mitarbeiter mitarbeiter;
+
 
     public Kassenbuchung(){};
 
