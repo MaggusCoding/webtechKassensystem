@@ -1,31 +1,62 @@
 package htwberlin.backend_kasse.services;
 
 
+import htwberlin.backend_kasse.api.Kassenbuchung;
+import htwberlin.backend_kasse.api.KassenbuchungManipulationRequest;
+import htwberlin.backend_kasse.api.Mitarbeiter;
+import htwberlin.backend_kasse.api.MitarbeiterManipulationRequest;
 import htwberlin.backend_kasse.entities.KassenbuchungEntity;
+import htwberlin.backend_kasse.entities.MitarbeiterEntity;
 import htwberlin.backend_kasse.repos.KassenbuchungRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class KassenbuchungService {
 
     @Autowired
-    KassenbuchungRepository repo;
+    private KassenbuchungRepository repo;
 
-    public KassenbuchungEntity save(KassenbuchungEntity kassenbuchungEntity){
-        return repo.save(kassenbuchungEntity);
+    public KassenbuchungService(KassenbuchungRepository kassenbuchungRepository) {
+        this.repo = kassenbuchungRepository;
     }
 
-    public KassenbuchungEntity get(int id){
-        return repo.findById(id).orElseThrow(RuntimeException::new);
+    public Kassenbuchung create(KassenbuchungManipulationRequest request) {
+        var kassenbuchungEntity = new KassenbuchungEntity(request.getBuchungsbetrag());
+        kassenbuchungEntity = repo.save(kassenbuchungEntity);
+        return transformEntity(kassenbuchungEntity);
     }
 
-    public List<KassenbuchungEntity> findAll(){
-        List<KassenbuchungEntity> list = new ArrayList<>();
-        for(KassenbuchungEntity x:repo.findAll()){list.add(x);}
-        return list;
-    };
+    public Kassenbuchung findById(int id) {
+        Optional<KassenbuchungEntity> kassenbuchungEntity = repo.findById(id);
+        return kassenbuchungEntity.map(this::transformEntity).orElse(null);
+    }
+
+    public List<Kassenbuchung> findAll() {
+        List<KassenbuchungEntity> kassenbuchung = repo.findAll();
+        return kassenbuchung.stream().map(this::transformEntity)
+                .collect(Collectors.toList());
+    }
+
+    public Kassenbuchung update(Integer id, KassenbuchungManipulationRequest request) {
+        var kassenbuchungEntityOptional = repo.findById(id);
+        if (kassenbuchungEntityOptional.isEmpty()) {
+            return null;
+        }
+        var kassenbuchungEntity = kassenbuchungEntityOptional.get();
+        kassenbuchungEntity.setBuchungsbetrag(request.getBuchungsbetrag());
+        kassenbuchungEntity= repo.save(kassenbuchungEntity);
+        return transformEntity(kassenbuchungEntity);
+    }
+
+    private Kassenbuchung transformEntity(KassenbuchungEntity kassenbuchungEntity) {
+        return new Kassenbuchung(kassenbuchungEntity.getId()
+                ,kassenbuchungEntity.getBuchungsbetrag()
+                , kassenbuchungEntity.getTimestamp()
+                , kassenbuchungEntity.getLastUpdatedOn());
+    }
 }

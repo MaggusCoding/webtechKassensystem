@@ -1,33 +1,24 @@
-package htwberlin.backend_kasse.entities;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+package htwberlin.backend_kasse.api;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
-@Entity(name="kassenbuchung")
-public class KassenbuchungEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class KassenbuchungManipulationRequest {
+
     private BigDecimal buchungsbetrag;
-    @CreationTimestamp
+
     private Instant timestamp;
-    @UpdateTimestamp
     private Instant lastUpdatedOn;
 
-
-    protected KassenbuchungEntity() {
-    }
-
-    public KassenbuchungEntity(BigDecimal buchungsbetrag) {
+    public KassenbuchungManipulationRequest(BigDecimal buchungsbetrag, Instant timestamp, Instant lastUpdatedOn) {
         this.buchungsbetrag = buchungsbetrag;
+        this.timestamp = timestamp;
+        this.lastUpdatedOn = lastUpdatedOn;
     }
+
+
+    //Getters Setters
+
 
     public BigDecimal getBuchungsbetrag() {
         return buchungsbetrag;
@@ -35,10 +26,6 @@ public class KassenbuchungEntity {
 
     public void setBuchungsbetrag(BigDecimal buchungsbetrag) {
         this.buchungsbetrag = buchungsbetrag;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public Instant getTimestamp() {
