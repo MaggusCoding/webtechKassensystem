@@ -5,7 +5,10 @@ import htwberlin.backend_kasse.KassenbuchungService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@CrossOrigin("http://localhost:3000/")
 public class Controller {
 
     @Autowired
@@ -21,10 +24,14 @@ public class Controller {
             int kassenbuchungId = Integer.parseInt(id);
         return kassenbuchungService.get(kassenbuchungId);
     }
-       /** @GetMapping("/")
+        @GetMapping("/kassenbuchung/all")
+        public List<Kassenbuchung> getAllKassenbuchungen(){
+            return kassenbuchungService.findAll();
+    }
+        @GetMapping("/")
         public String index() {
             return "Hello World!";
-        }*/
+        }
 
         @GetMapping("/help")
         public String help() {

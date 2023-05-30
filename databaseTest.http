@@ -7,6 +7,4 @@ Content-Type: application/json
   "buchungsbetrag": 6
 }
 
-###
-GET http://localhost:8080/kassenbuchung/1
-Content-Type: application/json
+
