@@ -2,7 +2,7 @@ package htwberlin.backend_kasse.api;
 
 import java.time.Instant;
 
-public class MitarbeiterCreateRequest {
+public class MitarbeiterManipulationRequest {
 
     private String nachname;
 
@@ -11,7 +11,7 @@ public class MitarbeiterCreateRequest {
     private Instant lastUpdatedOn;
     private String vorname;
 
-    public MitarbeiterCreateRequest(int id, String vorname, String nachname, String studiengang, Instant timestamp, Instant lastUpdatedOn) {
+    public MitarbeiterManipulationRequest(int id, String vorname, String nachname, String studiengang, Instant timestamp, Instant lastUpdatedOn) {
         this.nachname = nachname;
         this.studiengang = studiengang;
         this.timestamp = timestamp;

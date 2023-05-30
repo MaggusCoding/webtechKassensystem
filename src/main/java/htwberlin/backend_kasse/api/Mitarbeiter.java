@@ -18,6 +18,7 @@ public class Mitarbeiter {
         this.timestamp = timestamp;
         this.lastUpdatedOn = lastUpdatedOn;
         this.vorname = vorname;
+        this.id=id;
     }
 
     public String getVorname() {
