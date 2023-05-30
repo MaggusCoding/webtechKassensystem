@@ -10,12 +10,14 @@ public class Kassenbuchung {
 
     private Instant timestamp;
     private Instant lastUpdatedOn;
+    private int mitarbeiter_id;
 
-    public Kassenbuchung(int id, BigDecimal buchungsbetrag, Instant timestamp, Instant lastUpdatedOn) {
+    public Kassenbuchung(int id, int mitarbeiter_id, BigDecimal buchungsbetrag, Instant timestamp, Instant lastUpdatedOn) {
         this.buchungsbetrag = buchungsbetrag;
         this.timestamp = timestamp;
         this.lastUpdatedOn = lastUpdatedOn;
         this.id=id;
+        this.mitarbeiter_id = mitarbeiter_id;
     }
 
 
@@ -48,5 +50,13 @@ public class Kassenbuchung {
 
     public void setLastUpdatedOn(Instant lastUpdatedOn) {
         this.lastUpdatedOn = lastUpdatedOn;
+    }
+
+    public int getMitarbeiter_id() {
+        return mitarbeiter_id;
+    }
+
+    public void setMitarbeiter_id(int mitarbeiter_id) {
+        this.mitarbeiter_id = mitarbeiter_id;
     }
 }

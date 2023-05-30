@@ -1,9 +1,6 @@
 package htwberlin.backend_kasse.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,13 +17,16 @@ public class KassenbuchungEntity {
     private Instant timestamp;
     @UpdateTimestamp
     private Instant lastUpdatedOn;
-
+    @OneToOne
+    @JoinColumn(name = "mitarbeiter_id",referencedColumnName = "id")
+    private MitarbeiterEntity buchender;
 
     protected KassenbuchungEntity() {
     }
 
-    public KassenbuchungEntity(BigDecimal buchungsbetrag) {
+    public KassenbuchungEntity(BigDecimal buchungsbetrag,MitarbeiterEntity buchender) {
         this.buchungsbetrag = buchungsbetrag;
+        this.buchender=buchender;
     }
 
     public BigDecimal getBuchungsbetrag() {
@@ -55,5 +55,13 @@ public class KassenbuchungEntity {
 
     public void setLastUpdatedOn(Instant lastUpdatedOn) {
         this.lastUpdatedOn = lastUpdatedOn;
+    }
+
+    public MitarbeiterEntity getBuchender() {
+        return buchender;
+    }
+
+    public void setBuchender(MitarbeiterEntity buchender) {
+        this.buchender = buchender;
     }
 }

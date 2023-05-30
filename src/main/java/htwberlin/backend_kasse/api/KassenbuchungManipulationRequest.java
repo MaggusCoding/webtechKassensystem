@@ -9,11 +9,13 @@ public class KassenbuchungManipulationRequest {
 
     private Instant timestamp;
     private Instant lastUpdatedOn;
+    private int mitarbeiter_id;
 
-    public KassenbuchungManipulationRequest(BigDecimal buchungsbetrag, Instant timestamp, Instant lastUpdatedOn) {
+    public KassenbuchungManipulationRequest(BigDecimal buchungsbetrag, int mitarbeiter_id, Instant timestamp, Instant lastUpdatedOn) {
         this.buchungsbetrag = buchungsbetrag;
         this.timestamp = timestamp;
         this.lastUpdatedOn = lastUpdatedOn;
+        this.mitarbeiter_id = mitarbeiter_id;
     }
 
 
@@ -42,5 +44,13 @@ public class KassenbuchungManipulationRequest {
 
     public void setLastUpdatedOn(Instant lastUpdatedOn) {
         this.lastUpdatedOn = lastUpdatedOn;
+    }
+
+    public int getMitarbeiter_id() {
+        return mitarbeiter_id;
+    }
+
+    public void setMitarbeiter_id(int mitarbeiter_id) {
+        this.mitarbeiter_id = mitarbeiter_id;
     }
 }
