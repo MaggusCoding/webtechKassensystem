@@ -1,10 +1,10 @@
 ###
-POST http://localhost:8080/kassenbuchung
+POST http://localhost:8080/createMitarbeiter
 Content-Type: application/json
 
 {
-  "buchender": "Markus",
-  "buchungsbetrag": 6
+  "vorname": "Markus",
+  "nachname": "Seehammmmer",
+  "studiengang": "Winfo"
 }
-
 

@@ -1,4 +1,4 @@
-package htwberlin.backend_kasse;
+/**package htwberlin.backend_kasse;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/home").permitAll()
+                        .requestMatchers("/", "/home","/createMitarbeiter","/kassenbuchung","/mitarbeiter/all","/kassenbuchung/{id}","/kassenbuchung/all").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -41,4 +41,4 @@ public class WebSecurityConfig {
 
         return new InMemoryUserDetailsManager(user);
     }
-}
+}*/
