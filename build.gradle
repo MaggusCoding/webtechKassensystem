@@ -20,9 +20,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.postgresql:postgresql'
 	runtimeOnly 'com.h2database:h2:2.1.214'
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
 //  Temporary explicit version to fix Thymeleaf bug
-//	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
 //	implementation 'org.springframework.security:spring-security-test'
 
 

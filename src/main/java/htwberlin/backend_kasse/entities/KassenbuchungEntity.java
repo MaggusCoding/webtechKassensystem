@@ -17,7 +17,7 @@ public class KassenbuchungEntity {
     private Instant timestamp;
     @UpdateTimestamp
     private Instant lastUpdatedOn;
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "mitarbeiter_id",referencedColumnName = "id")
     private MitarbeiterEntity buchender;
 

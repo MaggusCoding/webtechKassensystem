@@ -1,10 +1,12 @@
 package htwberlin.backend_kasse.entities;
 
+import htwberlin.backend_kasse.api.Kassenbuchung;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="mitarbeiter")
@@ -19,6 +21,8 @@ public class MitarbeiterEntity {
     private Instant timestamp;
     @UpdateTimestamp
     private Instant lastUpdatedOn;
+    @OneToMany(mappedBy = "buchender",fetch = FetchType.EAGER)
+    private List<KassenbuchungEntity> buchungen= new ArrayList<>();
 
 
     protected MitarbeiterEntity() {
@@ -72,5 +76,13 @@ public class MitarbeiterEntity {
 
     public void setLastUpdatedOn(Instant lastUpdatedOn) {
         this.lastUpdatedOn = lastUpdatedOn;
+    }
+
+    public List<KassenbuchungEntity> getBuchungen() {
+        return buchungen;
+    }
+
+    public void setBuchungen(List<KassenbuchungEntity> buchungen) {
+        this.buchungen = buchungen;
     }
 }

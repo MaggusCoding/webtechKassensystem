@@ -1,6 +1,8 @@
 package htwberlin.backend_kasse.api;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Mitarbeiter {
 
@@ -11,14 +13,16 @@ public class Mitarbeiter {
     private Instant timestamp;
     private Instant lastUpdatedOn;
     private String vorname;
+    private List<Integer> kassenbuchungen = new ArrayList<>();
 
-    public Mitarbeiter(int id, String vorname, String nachname, String studiengang, Instant timestamp, Instant lastUpdatedOn) {
+    public Mitarbeiter(int id, String vorname, String nachname, String studiengang, Instant timestamp, Instant lastUpdatedOn, List<Integer> kassenbuchungen) {
         this.nachname = nachname;
         this.studiengang = studiengang;
         this.timestamp = timestamp;
         this.lastUpdatedOn = lastUpdatedOn;
         this.vorname = vorname;
         this.id=id;
+        this.kassenbuchungen=kassenbuchungen;
     }
 
     public String getVorname() {
@@ -65,5 +69,13 @@ public class Mitarbeiter {
 
     public void setLastUpdatedOn(Instant lastUpdatedOn) {
         this.lastUpdatedOn = lastUpdatedOn;
+    }
+
+    public List<Integer> getKassenbuchungen() {
+        return kassenbuchungen;
+    }
+
+    public void setKassenbuchungen(List<Integer> kassenbuchungen) {
+        this.kassenbuchungen = kassenbuchungen;
     }
 }

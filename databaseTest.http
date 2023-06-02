@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8080/createMitarbeiter
+POST localhost:8080/api/mitarbeiter
 Content-Type: application/json
 
 {

@@ -3,11 +3,13 @@ package htwberlin.backend_kasse.services;
 
 import htwberlin.backend_kasse.api.Mitarbeiter;
 import htwberlin.backend_kasse.api.MitarbeiterManipulationRequest;
+import htwberlin.backend_kasse.entities.KassenbuchungEntity;
 import htwberlin.backend_kasse.entities.MitarbeiterEntity;
 import htwberlin.backend_kasse.repos.MitarbeiterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,11 +57,13 @@ public class MitarbeiterService {
     }
 
     private Mitarbeiter transformEntity(MitarbeiterEntity mitarbeiterEntity) {
+        var kassenbuchungen = mitarbeiterEntity.getBuchungen().stream().map(KassenbuchungEntity::getId).collect(Collectors.toList());
         return new Mitarbeiter(mitarbeiterEntity.getId()
                 , mitarbeiterEntity.getVorname()
                 , mitarbeiterEntity.getNachname()
                 , mitarbeiterEntity.getStudiengang()
                 , mitarbeiterEntity.getTimestamp()
-                , mitarbeiterEntity.getLastUpdatedOn());
+                , mitarbeiterEntity.getLastUpdatedOn()
+                ,kassenbuchungen);
     }
 }
