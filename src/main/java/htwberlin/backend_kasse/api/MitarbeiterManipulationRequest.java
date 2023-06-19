@@ -18,7 +18,7 @@ public class MitarbeiterManipulationRequest {
         this.lastUpdatedOn = lastUpdatedOn;
         this.vorname = vorname;
     }
-
+public MitarbeiterManipulationRequest() {}
     public String getVorname() {
         return vorname;
     }

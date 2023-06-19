@@ -18,6 +18,7 @@ public class KassenbuchungManipulationRequest {
         this.mitarbeiter_id = mitarbeiter_id;
     }
 
+    public KassenbuchungManipulationRequest() {}
 
     //Getters Setters
 
