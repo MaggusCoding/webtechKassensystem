@@ -40,5 +40,13 @@ public class MitarbeiterController {
         var mitarbeiter = mitarbeiterService.update(id,request);
         return mitarbeiter!=null?ResponseEntity.ok(mitarbeiter):ResponseEntity.notFound().build();
     }
-
+    @DeleteMapping("/api/mitarbeiter/{id}")
+    public ResponseEntity<Void> deleteMitarbeiter(@PathVariable Integer id) {
+        boolean deleted = mitarbeiterService.delete(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

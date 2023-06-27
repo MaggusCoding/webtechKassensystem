@@ -66,4 +66,13 @@ public class MitarbeiterService {
                 , mitarbeiterEntity.getLastUpdatedOn()
                 ,kassenbuchungen);
     }
+    public boolean delete(int id) {
+        Optional<MitarbeiterEntity> optionalMitarbeiter = repo.findById(id);
+        if (optionalMitarbeiter.isPresent()) {
+            MitarbeiterEntity mitarbeiterEntity = optionalMitarbeiter.get();
+            repo.delete(mitarbeiterEntity);
+            return true;
+        }
+        return false;
+    }
 }
