@@ -1,5 +1,6 @@
 package htwberlin.backend_kasse.security;
 
+
 import htwberlin.backend_kasse.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
