@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class HomeController {
 
 
-        @GetMapping("/")
+        @GetMapping("/api/test/all")
         public String index() {
             return "Hello World, you are not logged in!";
         }
