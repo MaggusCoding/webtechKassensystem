@@ -13,6 +13,7 @@ public class KassenbuchungEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private BigDecimal buchungsbetrag;
+    private String comment;
     @CreationTimestamp
     private Instant timestamp;
     @UpdateTimestamp
@@ -24,9 +25,10 @@ public class KassenbuchungEntity {
     protected KassenbuchungEntity() {
     }
 
-    public KassenbuchungEntity(BigDecimal buchungsbetrag,MitarbeiterEntity buchender) {
+    public KassenbuchungEntity(BigDecimal buchungsbetrag,MitarbeiterEntity buchender, String comment) {
         this.buchungsbetrag = buchungsbetrag;
         this.buchender=buchender;
+        this.comment=comment;
     }
 
     public BigDecimal getBuchungsbetrag() {
@@ -63,5 +65,13 @@ public class KassenbuchungEntity {
 
     public void setBuchender(MitarbeiterEntity buchender) {
         this.buchender = buchender;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

@@ -27,7 +27,7 @@ public class KassenbuchungService {
 
     public Kassenbuchung create(KassenbuchungManipulationRequest request) {
         var mitarbeiter = mitarbeiterRepository.findById(request.getMitarbeiter_id()).orElseThrow();
-        var kassenbuchungEntity = new KassenbuchungEntity(request.getBuchungsbetrag(),mitarbeiter);
+        var kassenbuchungEntity = new KassenbuchungEntity(request.getBuchungsbetrag(),mitarbeiter,request.getComment());
         kassenbuchungEntity = kassenbuchungRepository.save(kassenbuchungEntity);
         return transformEntity(kassenbuchungEntity);
     }
@@ -58,6 +58,7 @@ public class KassenbuchungService {
         return new Kassenbuchung(kassenbuchungEntity.getId()
                 ,kassenbuchungEntity.getBuchender().getId()
                 ,kassenbuchungEntity.getBuchungsbetrag()
+                ,kassenbuchungEntity.getComment()
                 , kassenbuchungEntity.getTimestamp()
                 , kassenbuchungEntity.getLastUpdatedOn());
     }
