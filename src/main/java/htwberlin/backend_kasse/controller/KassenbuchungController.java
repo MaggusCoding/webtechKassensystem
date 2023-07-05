@@ -10,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class KassenbuchungController {
@@ -32,6 +35,10 @@ public class KassenbuchungController {
     @GetMapping("/api/kassenbuchung")
     public ResponseEntity<List<Kassenbuchung>> getKassenbuchung() {
         return ResponseEntity.ok(kassenbuchungService.findAll());
+    }
+    @GetMapping("/api/kassenbuchung/monthly")
+    public ResponseEntity<Map<Date, BigDecimal>> getMonthly() {
+        return ResponseEntity.ok(kassenbuchungService.calculateMonthlyRevenue());
     }
     @GetMapping("/api/kassenbuchung/{id}")
     public ResponseEntity<Kassenbuchung> fetchKassenbuchungbyId(@PathVariable Integer id) {
