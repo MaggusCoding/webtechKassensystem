@@ -25,7 +25,7 @@ public class MitarbeiterEntity {
     private List<KassenbuchungEntity> buchungen= new ArrayList<>();
 
 
-    protected MitarbeiterEntity() {
+    public MitarbeiterEntity() {
     }
 
     public MitarbeiterEntity(String vorname, String nachname, String studiengang) {
@@ -84,5 +84,9 @@ public class MitarbeiterEntity {
 
     public void setBuchungen(List<KassenbuchungEntity> buchungen) {
         this.buchungen = buchungen;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

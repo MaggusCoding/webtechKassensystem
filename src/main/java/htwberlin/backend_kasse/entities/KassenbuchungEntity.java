@@ -22,7 +22,7 @@ public class KassenbuchungEntity {
     @JoinColumn(name = "mitarbeiter_id",referencedColumnName = "id")
     private MitarbeiterEntity buchender;
 
-    protected KassenbuchungEntity() {
+    public KassenbuchungEntity() {
     }
 
     public KassenbuchungEntity(BigDecimal buchungsbetrag,MitarbeiterEntity buchender, String comment) {
@@ -73,5 +73,9 @@ public class KassenbuchungEntity {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
