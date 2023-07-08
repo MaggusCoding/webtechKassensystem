@@ -58,7 +58,7 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/api/auth/signin").permitAll()
-                                .requestMatchers("/api/**").permitAll()
+                                //.requestMatchers("/api/**").permitAll()
                                 .anyRequest().authenticated()
                 );
         http.cors();
