@@ -20,11 +20,11 @@ jobs:
           with:
             task: get-measurement
             branch: main
+        - name: clean build
+          run: ./gradlew clean test --info --stacktrace
         - name: Eco CI Energy Estimation - End Measurement
           uses: green-coding-berlin/eco-ci-energy-estimation@v2
           with:
             task: display-results
             branch: main
             pr-comment: true
-        - name: clean build
-          run: ./gradlew clean test --info --stacktrace
