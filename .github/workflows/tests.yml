@@ -11,5 +11,20 @@ jobs:
           with:
             distribution: "adopt"
             java-version: 17
+        - name: Eco CI Energy Estimation - Initialize
+          uses: green-coding-berlin/eco-ci-energy-estimation@v2
+          with:
+              task: start-measurement
+        - name: Eco CI Energy Estimation - Get Measurement
+          uses: green-coding-berlin/eco-ci-energy-estimation@v2
+          with:
+            task: get-measurement
+            branch: main
+        - name: Eco CI Energy Estimation - End Measurement
+          uses: green-coding-berlin/eco-ci-energy-estimation@v2
+          with:
+            task: display-results
+            branch: main
+            pr-comment: true
         - name: clean build
           run: ./gradlew clean test --info --stacktrace
