@@ -23,3 +23,6 @@ jobs:
             task: display-results
             branch: main
             pr-comment: true
+        - name: Print total data
+          run: |
+            echo "total json: ${{ steps.total-measurement-step.outputs.data-total-json }}"  
