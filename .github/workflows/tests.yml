@@ -19,19 +19,11 @@ jobs:
           run: ./gradlew clean test --info --stacktrace
         - name: Eco CI Energy Estimation - End Measurement
           uses: green-coding-berlin/eco-ci-energy-estimation@v2
+          id: total-measurement-step
           with:
             task: display-results
             branch: main
             pr-comment: true
-        - name: Checkout Repo Measurment
-          uses: green-coding-berlin/eco-ci-energy-estimation@v2
-          id: checkout-step
-          with:
-            task: get-measurement
-            label: 'repo checkout'
-        - name: Print checkout data
-          run: |
-            echo "total json: ${{ steps.checkout-step.outputs.data-lap-json }}"
         - name: Print total data
           run: |
             echo "total json: ${{ steps.total-measurement-step.outputs.data-total-json }}"  
